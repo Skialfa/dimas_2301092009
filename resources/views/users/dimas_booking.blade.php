@@ -6,6 +6,14 @@
 <div class="container py-4">
     <div class="mb-5 text-center">
         <h2 class="fw-bold text-dark">Jadwal Booking</h2>
+        <div class="mt-5 text-center">
+    <div class="mx-auto" style="max-width: 1000px;">
+        <img src="{{ asset('storage/' . $venue->gambar) }}" 
+             alt="Lapangan {{ $venue->nama_lapangan }}" 
+             class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" 
+             style="height: 400px; object-fit: cover; border: 4px solid #f9481e;">
+    </div>
+</div>
         <p class="text-muted mb-1 fs-5">Lapangan: <strong class="text-dark">{{ $venue->nama_lapangan }}</strong></p>
         <p class="text-muted mb-4 fs-6">
             Tanggal Booking: 
@@ -17,7 +25,7 @@
             <i class="bi bi-arrow-left-circle"></i> Ganti Tanggal / Lapangan
         </a>
     </div>
-
+    <!-- Gambar Lapangan -->
     @php
         $jamList = [
             ['06:00', '08:00'], ['08:00', '10:00'], ['10:00', '12:00'],
