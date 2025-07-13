@@ -99,7 +99,11 @@
                         @endif
                     </td>
                     <td>
-                        @if ($booking->status !== 'canceled' && $now->lt($bookingTime))
+                        @if (
+                            $booking->status !== 'canceled'
+                            && $now->lt($bookingTime)
+                            && (!optional($booking->payment)->status_pembayaran || $booking->payment->status_pembayaran !== 'paid')
+                        )
                             <form action="{{ route('booking.cancel', $booking->id) }}" method="POST" onsubmit="return confirm('Yakin ingin membatalkan booking ini?')">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-outline-danger mb-2">
@@ -108,6 +112,12 @@
                             </form>
                         @else
                             <span class="text-muted">-</span>
+                        @endif
+
+                         @if ($booking->payment && $booking->payment->status_pembayaran === 'paid')
+                            <a href="{{ route('booking.struk', $booking->id) }}" class="btn btn-sm btn-outline-success mt-2">
+                                <i class="bi bi-file-earmark-text"></i> Lihat Struk
+                            </a>
                         @endif
                     </td>
                     <td>

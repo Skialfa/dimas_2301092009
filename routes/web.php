@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/booking', [BookingController::class, 'store'])->name('dimas_booking.store');
     Route::get('/booking-list', [BookingController::class, 'myBookings'])->name('booking.dimas_list');
     Route::post('/booking/{id}/cancel', [BookingController::class, 'cancel'])->name('booking.cancel');
+    Route::get('/booking/struk/{id}', [BookingController::class, 'showStruk'])->name('booking.struk')->middleware('auth');
 
     // Payment
     Route::get('/payment/{booking_id}', [PaymentController::class, 'showForm'])->name('payment.form');

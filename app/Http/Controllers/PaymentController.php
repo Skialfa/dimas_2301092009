@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Payment;
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class PaymentController extends Controller
@@ -83,6 +85,16 @@ class PaymentController extends Controller
         $payment->booking->status = 'confirmed';
         $payment->booking->save();
     }
+
+    // Kirim chat otomatis dari admin ke user
+    $admin = User::where('role', 'admin')->first();
+    $user = $payment->booking->user;
+
+    Message::create([
+        'sender_id' => $admin->id,
+        'receiver_id' => $user->id,
+        'message' => 'Hallo DPlayers!, pembayaran kamu sudah diverifikasi. Silakan datang ke lokasi tepat waktu dan Jangan lupa bawa struk bookingnya yaa.'
+    ]);
 
     return back()->with('success', 'Pembayaran berhasil diverifikasi dan booking dikonfirmasi.');
 }

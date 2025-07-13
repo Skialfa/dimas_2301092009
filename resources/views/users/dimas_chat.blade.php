@@ -43,7 +43,7 @@
 <div class="container py-4">
     <div class="card shadow-lg rounded-3 border-0">
         <div class="card-header bg-orange text-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="bi bi-chat-dots-fill me-2"></i> Chat dengan Admin</h5>
+            <h5 class="mb-0"><i class="bi bi-chat-dots-fill me-2"></i>Admin DPlay</h5>
             <span class="badge bg-white text-orange shadow-sm">● Online</span>
         </div>
 

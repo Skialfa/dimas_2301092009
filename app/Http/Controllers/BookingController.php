@@ -173,4 +173,17 @@ class BookingController extends Controller
 
         return view('admin.laporan_booking', compact('bookings', 'tanggal'));
     }
+
+       public function showStruk($id)
+{
+    $booking = Booking::with(['user', 'venue', 'payment'])->findOrFail($id);
+
+    if ($booking->user_id !== auth()->id() || $booking->payment->status_pembayaran !== 'paid') {
+        abort(403);
+    }
+
+    return view('users.dimas_struk_lapangan', compact('booking'));
+}
+
+
 }

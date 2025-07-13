@@ -12,7 +12,7 @@
 <div class="text-center mb-3">
             <img src="{{ asset('storage/gambar/logo.png') }}" alt="Logo DPlay" style="max-width: 150px;">
         </div>
-                    <h4 class="fw-bold mb-4 text-center text-orange">Bukti Pembayaran</h4>
+                    <h4 class="fw-bold mb-4 text-center text-orange">DPlay</h4>
 
                     <div class="text-center mb-4">
                         <p class="mb-1 fs-6">Lapangan: <strong>{{ $booking->venue->nama_lapangan ?? '-' }}</strong></p>
